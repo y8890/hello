@@ -1,0 +1,21 @@
+<!-- <template>
+    <div>这是一个div</div>
+</template> -->
+<body>
+    
+</body>
+<script>
+    const node = {
+        tageName:'div',
+        innerHTML:'这是一个DIV'
+    }
+    const dom = document.createElement(node.tageName)
+    dom.innerHTML = node.innerHTML
+    dom.onclick = () => {
+        dom.innerHTML= '新生活'
+        setTimeout(( )=> {
+            document.body.removeChild(dom)
+        },1000)
+    }
+    document.body.appendChild(dom)
+</script>
