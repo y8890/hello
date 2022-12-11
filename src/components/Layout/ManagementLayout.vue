@@ -79,6 +79,7 @@ export default{
 .concent {
     width:100%;
     height: calc(100% - 50px);
+    overflow:scroll;
 }
 .concent.el-menu {
     background: #222b45;
