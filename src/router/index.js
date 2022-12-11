@@ -24,27 +24,27 @@ const router = createRouter({
     // },
     {
       path: '/',
-      // name: 'home'
+      name: 'Home',
       component: home
     },
     {
       path: '/PageA',
-      // name: 'PageA'
+      name: 'PageA',
       component: PageA
     },
     {
       path: '/PageB',
-      // name: 'PageB'
+      name: 'PageB',
       component: PageB
     },
     {
       path: '/Resume',
-      // name: 'Resume'
+      name: 'Resume',
       component: Resume
     },
     {
       path: '/login',
-      // name: 'login'
+      name: 'login',
       component: login
     },
   ]
