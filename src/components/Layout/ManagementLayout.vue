@@ -75,13 +75,22 @@ export default{
     width:100%;
     height: 50px;
     background:white;
+    border-bottom: 1px soild #d1d1d1;
 }
 .concent {
-    width:100%;
-    height: calc(100% - 50px);
+    width:`calc(100% - 16px);
+    height: calc(100% - 50px - 16px);
     overflow:scroll;
+    padding: 8px;
 }
-.concent.el-menu {
-    background: #222b45;
+.concent .el-menu {
+    background-color:unset;
+    border-right:unset
 }
+.container .el-sub-menu_title,
+.container .el-menu-item-group_title,
+.container .el-menu-item{
+    color:rgb(42, 154, 169);
+}
+
 </style>
