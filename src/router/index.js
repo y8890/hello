@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import home from '../views/home.vue'
+import ManagementLayout from '../components/Layout/ManagementLayout.vue'
 import PageA from '../views/PageA.vue'
 import PageB from '../views/PageB.vue'
 import login from '../views/login.vue'
@@ -24,23 +25,35 @@ const router = createRouter({
     // },
     {
       path: '/',
-      name: 'Home',
-      component: home
-    },
-    {
-      path: '/PageA',
-      name: 'PageA',
-      component: PageA
-    },
-    {
-      path: '/PageB',
-      name: 'PageB',
-      component: PageB
-    },
-    {
-      path: '/Resume',
-      name: 'Resume',
-      component: Resume
+      // name: 'Home',
+      component: ManagementLayout,
+      children:[
+        {
+          path: '/home',
+          name: 'home',
+          component: home
+        },
+        {
+          path: '/PageA',
+          name: 'PageA',
+          component: PageA
+        },
+        {
+          path: '/PageB',
+          name: 'PageB',
+          component: PageB
+        },
+        {
+          path: '/Resume',
+          name: 'Resume',
+          component: Resume
+        },
+          // {
+          //   path: '/ManagementLayout',
+          //   // name: 'ManagementLayout',
+          //   component: ManagementLayout
+          // },
+      ],
     },
     {
       path: '/login',
@@ -48,6 +61,18 @@ const router = createRouter({
       component: login
     },
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const shifoudenglu = localStorage.getItem('shifoudenglu')
+  const dontNeedLoginPageNames =['login']
+  if(shifoudenglu !== 'shi' && !dontNeedLoginPageNames.includes(to.name)){
+    next({
+      name:'login',
+    })
+  }else {
+    next()
+  }
 })
 
 export default router

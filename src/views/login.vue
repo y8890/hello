@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 export default{  
     methods:{
         handleUsernameInput(event){

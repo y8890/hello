@@ -19,7 +19,7 @@
             <el-menu-item index="Resume">
                 <span>第二章</span>
           </el-menu-item>
-            <el-sub-menu>
+            <el-sub-menu index="aboutMe">
             <template #title>
                 <span>关于我</span>
             </template>
@@ -39,7 +39,7 @@
         }">
             <div class="top"></div>
             <div class="concent">
-                <router-view></router-view> -->
+                <router-view></router-view> 
             </div>
         </div>
     </div>
@@ -78,9 +78,9 @@ export default{
     border-bottom: 1px soild #d1d1d1;
 }
 .concent {
-    width:`calc(100% - 16px);
+    width: calc(100% - 16px);
     height: calc(100% - 50px - 16px);
-    overflow:scroll;
+    overflow:suto;
     padding: 8px;
 }
 .concent .el-menu {
