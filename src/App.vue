@@ -20,4 +20,7 @@ html,body,#app{
 width: 100%;
 height: 100%;
 }
+body {
+  background: #d1d1d1;
+}
 </style>

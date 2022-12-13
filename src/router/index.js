@@ -64,9 +64,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const shifoudenglu = localStorage.getItem('shifoudenglu')
+  const shifoudenglu = localStorage.getItem('已登录')
   const dontNeedLoginPageNames =['login']
-  if(shifoudenglu !== 'shi' && !dontNeedLoginPageNames.includes(to.name)){
+  if(shifoudenglu !== '是' && !dontNeedLoginPageNames.includes(to.name)){
     next({
       name:'login',
     })
