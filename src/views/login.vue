@@ -27,7 +27,7 @@ export default{
             console.log('yong hu ming he mima',this.username,this.password);
         if (this.username === 'admin' && this.password === '123456' ){
             localStorage.setItem('已登录','是');
-            localStorage.setItem('用户名','this.usname');
+            localStorage.setItem('用户名',this.username);
             this.$router.back()
         }else {
             alert('用户名或密码不正确')

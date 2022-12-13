@@ -37,7 +37,26 @@
             display:` flex`,
             flexDirection: `column`,
         }">
-            <div class="top"></div>
+            <div class="top">
+                <div class="header-container">
+                    left
+                </div>
+                <div class="header-container" style="display:flex; justify-content:flex-end"  padding-right:20px>
+    <el-dropdown style="height:100%; height:100%;display:flex;align-items:center;" @command="handleCommand">
+        <span class="el-dropdown-link">
+            <el-icon style="margin-right: 8px;"><Avatar /></el-icon>{{ username }}
+        <el-icon class="el-icon--right">
+            <arrow-down />
+        </el-icon>
+        </span>
+        <template #dropdown>
+        <el-dropdown-menu>
+            <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+        </el-dropdown-menu>
+        </template>
+    </el-dropdown>
+                </div>
+            </div>
             <div class="concent">
                 <router-view></router-view> 
             </div>
@@ -47,9 +66,15 @@
 
 <script>
 export default{
-    data(){
+    created() {
+        const username = localStorage.getItem('用户名');
+        console.log(username);
+        this.username = username;
+        },
+    data() {
         return{
             sideBarWidth:220,
+            username:'',
         }
     },
     methods: {
@@ -59,12 +84,22 @@ export default{
                 name:index,
             })
         },
+        handleCommand (command){
+           const isLogout = command === 'logout'
+           if (isLogout){
+            localStorage.removeItem('已登录')
+            localStorage.removeItem('用户名')
+             this.$router.push({
+                name:'login',
+             })
+           }
+        }
     }
 }
 </script>
 
 
-<style>
+<style scoped>
 .container {
     width: 100%;
     height: 100%;
@@ -76,6 +111,8 @@ export default{
     height: 50px;
     background:white;
     border-bottom: 1px soild #d1d1d1;
+    display: flex;
+    justify-content: space-between;
 }
 .concent {
     width: calc(100% - 16px);
@@ -91,6 +128,11 @@ export default{
 .container .el-menu-item-group_title,
 .container .el-menu-item{
     color:rgb(42, 154, 169);
+}
+.header-container {
+    height: 100%;
+    min-width: 100px;
+    /* background-color: lightblue; */
 }
 
 </style>
