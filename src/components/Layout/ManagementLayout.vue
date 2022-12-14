@@ -99,7 +99,7 @@ export default{
 </script>
 
 
-<style scoped>
+<style>
 .container {
     width: 100%;
     height: 100%;
@@ -120,14 +120,17 @@ export default{
     overflow:suto;
     padding: 8px;
 }
-.concent .el-menu {
+.concent.left.el-menu {
     background-color:unset;
     border-right:unset
 }
-.container .el-sub-menu_title,
-.container .el-menu-item-group_title,
-.container .el-menu-item{
+.container.left.el-sub-menu_title,
+.container.left.el-menu-item-group_title,
+.container.left.el-menu-item{
     color:rgb(42, 154, 169);
+}
+.container.left.el-menu.is-active{
+color: #409eff;
 }
 .header-container {
     height: 100%;
