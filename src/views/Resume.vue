@@ -29,15 +29,6 @@ export default {
   components: {
     ResumeList,
   },
-  mounted () {
-  const shifoudenglu = localStorage.getItem('shifoudenglu')
-  const username =localStorage.getItem('yonghuming')
-  if (shifoudenglu !== 'shi') {
-    this.$router.push('/login')
-  }else if (username !== 'H'){
-    this.$router.push('/')
-  }
-  },
   data() {
     return {
       info: {
@@ -114,11 +105,11 @@ h2 {
   border-bottom: 1px solid #409eff;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  color: #409eff
+h1{
+  margin:21px 0;
+}
+h2{
+  margin: 20px 0;
 }
 
 body {
