@@ -39,7 +39,7 @@
         }">
             <div class="top">
                 <div class="header-container">
-                    left
+                    <!-- left -->
                 </div>
                 <div class="header-container" style="display:flex; justify-content:flex-end"  padding-right:20px>
     <el-dropdown style="height:100%; height:100%;display:flex;align-items:center;" @command="handleCommand">

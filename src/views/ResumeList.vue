@@ -1,20 +1,77 @@
 <template>
   <h4 v-if="level == 4">{{ title }}</h4>
   <h2 v-else>{{ title }}</h2>
-  <ul>
-    <li v-for="item of list" :key="item">
-      {{ item }}
+  <ul :class="editing ? 'editing':''" >
+    <li v-for="(item,index) of innerList" :key="index">
+      <el-row
+        v-if='editing'
+      >
+      <el-col
+      :span="22"
+      >
+        <el-input 
+          :model-value="item" 
+          @input="handleInput(index,$event)"
+        />
+      </el-col>
+      <el-col 
+      :span="2"
+      >
+      <el-row align="middle" style="height:100%;">
+        <el-button 
+          class="opt-btn" 
+          style="margin-left:8px" 
+          icon="Plus"
+          type="primary"
+          circle
+          @click="handleAdd(index)">
+        </el-button>
+        <el-button
+          class="opt-btn" 
+          style="margin-left:8px"
+          icon="Minus" 
+          type="danger" 
+          circle
+          @click="handleDelte(index)">
+        </el-button>
+      </el-row>
+      </el-col>
+    </el-row>
+    <el-row  v-else>
+      <span>{{ item }}</span>
+    </el-row>
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  props: ['list', 'title', 'level']
+  props: ['list', 'title', 'level','editing'],
+  data() {
+  return{
+    innerList: this.list,
+  }
+  },
+  methods:{
+    handleInput(index, event){
+      console.log(index, event)
+      this.innerList[index] = event
+    },
+    handleAdd(index){
+      this.innerList.splice(index + 1 , 0 ,'')
+    },
+    handleDelte(index){
+      this.innerList.splice(index,1 ,)
+      if(this.innerList.length === 0){
+        this.innerList.push('')
+      }
+    },
+  },
 }
+
 </script>
 
-<style>
+<style scoped>
 h1,
 h2,
 h3,
@@ -33,5 +90,12 @@ h4{
 ul{
   margin: 16px 0;
   padding-left:40px;
+}
+ul.editing li {
+  margin-bottom: 8px;
+}
+.opt-btn {
+ width: 20px;
+ height: 20px;
 }
 </style>
