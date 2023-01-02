@@ -52,7 +52,7 @@ import A from './'
 import AddAndDelete from './AddAndDelete.vue'
 export default {
   props: ['list', 'title', 'level','editing','modelValue'],
-  emits:['addPro','deletePro'],
+  emits:['addPro','deletePro','update:modelValue'],
   components:{
     AddAndDelete,
   },
