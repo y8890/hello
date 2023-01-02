@@ -6,33 +6,22 @@
     <ResumeList title="联系方式" :list="info.contact" :editing="editing"/>
     <ResumeList title="个人信息" :list="info.info" :editing="editing"/>
     <ResumeList title="技能清单" :list="info.skills" :editing="editing"/>
-    <h2>工作经历</h2>
-    <template
-      v-for="item of info.experiences"
-      :key="item.company"
-    >
-      <h3>{{ item.company }}</h3>
-      <ResumeList 
-        v-for="project of item.projects"
-        :key="project.projectName" 
-        :title="project.projectName" 
-        :list="project.projectExp" 
-        level="4" 
-        :editing="editing"
-      />
-    </template>
+   <projectOrWorkExp type="WORK" :data="info.experiences" :editing="editing"/>
+   <projectOrWorkExp type="PROJECT" :data="info.projectExps" :editing="editing"/>
     <ResumeList title="其他" :list="info.others" :editing="editing"/>
   </div>
 </template>
 
 <script>
 import ResumeList from './ResumeList.vue'
+import projectOrWorkExp from './projectOrWorkExp.vue'
 
 import defaultResumeInfo from './Resumeinfo'
 
 export default {
   components: {
     ResumeList,
+    projectOrWorkExp,
   },
   created(){
     const cunChuDeShuJu = JSON.parse(localStorage.getItem('ResumeInfo'))
@@ -76,10 +65,6 @@ h2 {
 h1{
   margin:21px 0;
 }
-h2{
-  margin: 20px 0;
-}
-
 body {
   background: #d1d1d1;
 }
