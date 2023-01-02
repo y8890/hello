@@ -16,7 +16,7 @@
          />
        </template>
     </div>
-    <div class="pro-exp-container" v-else-if="type === 'PROJECT'">
+    <div class="pro-exp-container" v-else-if="type === 'PROJECT' &&(innerData.length || editing)">
         <h2>
           项目经历
           <AddAndDelete
