@@ -1,7 +1,19 @@
 <template>
   <div v-if="finalList.length">
     <template v-if="level == 4">
-      <el-input v-if="editing" :modelValue="modelValue" @input="handleTitleInput"></el-input>
+      <el-row  v-if="editing" >
+        <el-col :span="22">
+          <el-input :modelValue="modelValue" @input="handleTitleInput">
+          </el-input>
+        </el-col>
+        <el-col :span="2">
+          <el-row align="middle" style="height:100%;">
+            <AddAndDelete
+            @add="$emit('addPro')"
+            @delete="$emit('deletePro')"/>
+          </el-row>
+        </el-col>
+      </el-row>
       <h4 class="project-tetie" v-else>{{ title }}</h4>
     </template>
     <h2 class="block-title" v-else>{{ title }}</h2>
@@ -22,22 +34,9 @@
         :span="2"
         >
         <el-row align="middle" style="height:100%;">
-          <el-button 
-            class="opt-btn" 
-            style="margin-left:8px" 
-            icon="Plus"
-            type="primary"
-            circle
-            @click="handleAdd(index)">
-          </el-button>
-          <el-button
-            class="opt-btn" 
-            style="margin-left:8px"
-            icon="Minus" 
-            type="danger" 
-            circle
-            @click="handleDelte(index)">
-          </el-button>
+          <AddAndDelete 
+          @add="handleAdd(index)"
+          @Delete="handleDelte(index)"/>
         </el-row>
         </el-col>
       </el-row>
@@ -48,10 +47,15 @@
     </ul>
   </div>
 </template>
-
+import A from './'
 <script>
+import AddAndDelete from './AddAndDelete.vue'
 export default {
   props: ['list', 'title', 'level','editing','modelValue'],
+  emits:['addPro','deletePro'],
+  components:{
+    AddAndDelete,
+  },
   computed :{ 
       finalList(){
         if(this.innerList.length){
@@ -112,8 +116,5 @@ ul{
 ul.editing li {
   margin-bottom: 8px;
 }
-.opt-btn {
- width: 20px;
- height: 20px;
-}
+
 </style>
