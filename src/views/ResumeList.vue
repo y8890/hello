@@ -14,7 +14,7 @@
           </el-row>
         </el-col>
       </el-row>
-      <h4 class="project-tetie" v-else>{{ title }}</h4>
+      <h4 class="project-titie" v-else>{{ title }}</h4>
     </template>
     <h2 class="block-title" v-else>{{ title }}</h2>
     <ul :class="editing ? 'editing':''" >

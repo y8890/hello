@@ -16,10 +16,17 @@
          />
        </template>
     </div>
-    <div class="pro-exp-container" v-else-if="type === 'PROJECT' && finalProData.length">
-        <h2>项目经历</h2>
+    <div class="pro-exp-container" v-else-if="type === 'PROJECT'">
+        <h2>
+          项目经历
+          <AddAndDelete
+            v-if="editing"
+            :showDelete="false"
+            @add="hanleaddPro(innerData.length)"
+            />
+        </h2>
          <ResumeList 
-           v-for="(project,index) of finalProData"
+           v-for="(project,index) of innerData"
            :key="project.id"
            v-model="project.projectName" 
            :title="project.projectName" 
@@ -34,6 +41,7 @@
 
 <script>
 import ResumeList from './ResumeList.vue'
+import AddAndDelete from './AddAndDelete.vue'
 export default{
     data(){
         return{
@@ -47,20 +55,7 @@ export default{
     },
     components: {
     ResumeList,
-  },
-  computed:{
-finalProData(){
-  if(this.innerData.length){
-     return this.innerData
-    }
-    if(this.editing){
-      return [{
-            projectName:'',
-            projectExp:[],
-            id:new Date().getTime(),
-        }]
-    }return []
-}
+    AddAndDelete,
   },
   methods:{
     hanleaddPro(index){
