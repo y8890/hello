@@ -19,7 +19,9 @@ export default{
 html,body,#app{
 width: 100%;
 height: 100%;
+overflow: hidden;
 }
+
 body {
   background: #d1d1d1;
 }
